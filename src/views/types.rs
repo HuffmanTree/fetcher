@@ -1,1 +1,4 @@
-pub enum View {}
+#[derive(Debug, PartialEq)]
+pub enum View {
+    Projects,
+}
