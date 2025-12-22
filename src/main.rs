@@ -1,4 +1,4 @@
-use rust_template::hello;
+use fetcher::hello;
 
 fn main() {
     println!("{}", hello());
