@@ -1,6 +1,9 @@
 use crate::views::types::View;
 
-#[derive(Debug)]
+#[derive(Clone, Debug)]
 pub enum Message {
+    Error(String),
     GoTo(View),
+    ImportProjects,
+    LoadConfig,
 }
