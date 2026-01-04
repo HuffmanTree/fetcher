@@ -1,5 +1,5 @@
 use crate::app::types::App;
-use crate::projects::types::Project;
+use crate::projects::types::ShallowProject;
 use std::fs;
 
 pub trait ImportProjects {
@@ -13,9 +13,12 @@ impl ImportProjects for App {
                 let projects_file = data_home.join("projects.json");
                 let project_json =
                     fs::read_to_string(projects_file).map_err(|err| err.to_string())?;
-                let projects = serde_json::from_str::<Vec<Project>>(project_json.as_str())
+                let projects = serde_json::from_str::<Vec<ShallowProject>>(project_json.as_str())
                     .map_err(|err| err.to_string())?;
-                self.projects = projects;
+                self.projects = projects
+                    .into_iter()
+                    .map(|project| project.deepen())
+                    .collect();
 
                 Ok(())
             }

@@ -3,6 +3,7 @@ mod components;
 mod config;
 mod macros;
 mod messages;
+mod mutations;
 mod projects;
 mod requests;
 mod views;

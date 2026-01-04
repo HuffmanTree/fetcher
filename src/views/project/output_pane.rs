@@ -1,7 +1,7 @@
 use crate::messages::types::Message;
-use crate::projects::types::Project;
+use crate::requests::types::Request;
 use iced::widget::{Container, container, text};
 
-pub fn view(project: &Project) -> Container<'_, Message> {
-    container(text(format!("Output {}", project.name)))
+pub fn view(request: &Request) -> Container<'_, Message> {
+    container(text(format!("Output {}", request.name)))
 }
